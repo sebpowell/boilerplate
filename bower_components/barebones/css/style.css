@@ -422,14 +422,14 @@ button.white.bordered:hover, .button.white.bordered:hover { border: 1px solid wh
 
 .container-x-large { max-width: 1200px; }
 
-.modal-wrapper { perspective: 1300px; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; visibility: hidden; overflow-y: scroll; }
+.modal-wrapper { -webkit-perspective: 1300px; perspective: 1300px; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; visibility: hidden; overflow-y: scroll; }
 .modal-wrapper.is-open { visibility: visible; }
 .modal-wrapper .modal-close { position: absolute !important; cursor: pointer; right: 20px; top: 12px; font-size: 32px; z-index: 999; opacity: 0.4; line-height: 1; }
 .modal-wrapper .modal-close:hover { opacity: 1; }
 
 .modal { width: 100%; background-color: white; visibility: hidden; opacity: 0; padding: 60px; overflow: hidden; }
 @media (min-width: 780px) { .modal { margin: 100px auto; width: 600px; } }
-.modal.is-open { visibility: visible; opacity: 1; transform: rotateX(0deg); }
+.modal.is-open { visibility: visible; opacity: 1; -webkit-transform: rotateX(0deg); transform: rotateX(0deg); }
 @media (min-width: 780px) { .modal.small { width: 360px; margin-left: -180px; } }
 .modal.large { max-width: 600px; width: 95%; }
 .modal .modal-header { zoom: 1; position: relative; text-align: center; text-transform: capitalize; padding: 16px; }
@@ -1504,18 +1504,18 @@ button.white.bordered:hover, .button.white.bordered:hover { border: 1px solid wh
 .navigation-primary.is-fixed { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 @media (min-width: 780px) { .navigation-primary.is-fixed { padding: 16px 48px; } }
 
-.mobile-navigation-toggle { position: absolute; top: 50%; right: 16px; margin-top: -7px; display: block; cursor: pointer; width: 20px; height: 14px; transform: rotate(0deg); transition: 0.5s ease-in-out; }
+.mobile-navigation-toggle { position: absolute; top: 50%; right: 16px; margin-top: -7px; display: block; cursor: pointer; width: 20px; height: 14px; -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); transition: 0.5s ease-in-out; }
 @media (min-width: 780px) { .mobile-navigation-toggle { display: none; } }
-.mobile-navigation-toggle span { display: block; position: absolute; height: 2px; border-radius: 3px; width: 100%; background: #2F363A; opacity: 1; left: 0; transform: rotate(0deg); transition: 0.25s; }
+.mobile-navigation-toggle span { display: block; position: absolute; height: 2px; border-radius: 3px; width: 100%; background: #2F363A; opacity: 1; left: 0; -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); transition: 0.25s; }
 .mobile-navigation-toggle span:nth-child(1) { top: 0; }
 .mobile-navigation-toggle span:nth-child(2), .mobile-navigation-toggle span:nth-child(3) { top: 6px; }
 .mobile-navigation-toggle span:nth-child(4) { top: 12px; }
 .mobile-navigation-toggle.close span:nth-child(1) { top: 6px; width: 0%; left: 50%; }
-.mobile-navigation-toggle.close span:nth-child(2) { transform: rotate(45deg); }
-.mobile-navigation-toggle.close span:nth-child(3) { transform: rotate(-45deg); }
+.mobile-navigation-toggle.close span:nth-child(2) { -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); }
+.mobile-navigation-toggle.close span:nth-child(3) { -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }
 .mobile-navigation-toggle.close span:nth-child(4) { top: 6px; width: 0%; left: 50%; }
 
-* { -webkit-box-sizing: border-box; box-sizing: border-box; }
+* { box-sizing: border-box; }
 
 html, body, div, span, object, iframe, hr, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, button, textarea, select, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; }
 
@@ -1554,7 +1554,7 @@ strong { font-weight: 600; }
 
 .module-team h4 { color: #0D3650; }
 .module-team img { max-width: 180px; margin-bottom: 16px; transition: scale, 0.25s; }
-.module-team img:hover { transform: scale(0.95); }
+.module-team img:hover { -webkit-transform: scale(0.95); -ms-transform: scale(0.95); transform: scale(0.95); }
 .module-team .module-team-member { zoom: 1; padding: 32px; width: 100%; float: left; transition: border .5s; cursor: pointer; }
 .module-team .module-team-member:before, .module-team .module-team-member:after { content: ""; display: table; }
 .module-team .module-team-member:after { clear: both; }

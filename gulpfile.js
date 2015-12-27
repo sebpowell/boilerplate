@@ -30,8 +30,8 @@ gulp.task('sass', function () {
 	})
 	// .pipe(autoprefixer("last 2 version", "> 1%"))
 	.pipe(gulp.dest(function(file) {
-    return file.base;
-   }));
+		return file.base;
+	 }));
 });
 
 /////////////////////////////////////////////////////
@@ -39,9 +39,9 @@ gulp.task('sass', function () {
 /////////////////////////////////////////////////////
 
 gulp.task("uglify", function() {
-	gulp.src(["js/**/*.js"])
-		.pipe(concat("app.js"))
-		.pipe(gulp.dest(""))
+	gulp.src(["assets/js/**/*.js"])
+		.pipe(concat("application.js"))
+		.pipe(gulp.dest("assets/js"))
 });
 
 /////////////////////////////////////////////////////
@@ -49,8 +49,8 @@ gulp.task("uglify", function() {
 /////////////////////////////////////////////////////
 
 gulp.task("watch", function() {
-	gulp.watch(['assets/css/*.sass'], ['sass']);
-	gulp.watch(['js/**/*.js'], ['uglify']);
+	gulp.watch(['assets/css/**/*.sass', 'assets/css/**/*.scss'], ['sass']);
+	gulp.watch(['assets/js/**/*.js'], ['uglify']);
 	gulp.watch(['views/**/*.jade'], ['jade']);
 });
 
