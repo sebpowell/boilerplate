@@ -6,17 +6,23 @@ var gulp = require("gulp"),
 		autoprefixer = require("gulp-autoprefixer"),
 		concat = require("gulp-concat"),
 		jade = require('gulp-jade'),
-		sass = require("gulp-ruby-sass"),
+		sass = require("gulp-sass"),
 		uglify = require("gulp-uglify");
+		promise = require('es6-promise').Promise;
 
 /////////////////////////////////////////////////////
 // HTML
 /////////////////////////////////////////////////////
 
 gulp.task("jade", function() {
-	gulp.src('views/**/!(_)*.jade')
-		.pipe(jade({pretty: true}))
-		.pipe(gulp.dest("views/build"));
+	gulp.src('docs/views/**/!(_)*.jade')
+		.pipe(jade({
+			pretty: true,
+			locals: {
+				image_base: "docs/images/",
+			}
+		}))
+		.pipe(gulp.dest("./"));
 });
 
 /////////////////////////////////////////////////////
@@ -24,24 +30,24 @@ gulp.task("jade", function() {
 /////////////////////////////////////////////////////
 
 gulp.task('sass', function () {
-	return sass('assets/css/theme.sass', { style: 'compact' })
-	.on('error', function (err) {
-		console.error('Error!', err.message);
-	})
-	// .pipe(autoprefixer("last 2 version", "> 1%"))
-	.pipe(gulp.dest(function(file) {
-		return file.base;
-	 }));
-});
+	gulp.src('docs/css/style.scss')
+		.pipe(sass({
+			outputStyle: "compact",
+		}).on('error', sass.logError))
+		.pipe(autoprefixer({browsers: ['last 2 versions'], remove: false}))
+		.pipe(gulp.dest(function(file) {
+			return file.base;
+		}));
+	});
 
 /////////////////////////////////////////////////////
 // JavaScript
 /////////////////////////////////////////////////////
 
 gulp.task("uglify", function() {
-	gulp.src(["assets/js/**/*.js"])
+	gulp.src(["docs/javascript/vendor/*.js", "docs/javascript/components/*.js"])
 		.pipe(concat("application.js"))
-		.pipe(gulp.dest("assets/js"))
+		.pipe(gulp.dest("docs/javascript/"))
 });
 
 /////////////////////////////////////////////////////
@@ -49,9 +55,9 @@ gulp.task("uglify", function() {
 /////////////////////////////////////////////////////
 
 gulp.task("watch", function() {
-	gulp.watch(['assets/css/**/*.sass', 'assets/css/**/*.scss'], ['sass']);
-	gulp.watch(['assets/js/**/*.js'], ['uglify']);
-	gulp.watch(['views/**/*.jade'], ['jade']);
+	gulp.watch(['dist/**/*.sass', 'dist/**/*.scss', 'docs/css/**/*.sass', 'docs/css/**/*.scss'], ['sass']);
+	gulp.watch(['docs/javascript/**/*.js'], ['uglify']);
+	gulp.watch(['docs/views/**/*.jade'], ['jade']);
 });
 
 gulp.task("default", ["watch"], function() {
